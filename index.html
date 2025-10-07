@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梗表情之神</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="app-container">
+        <aside id="side-nav">
+            <div class="logo-area">
+                <h2>梗表情之神</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#creation-area" class="active-nav"><span class="nav-icon">🎨</span> 表情创作</a></li>
+                    <li><a href="#explore-area"><span class="nav-icon">🔥</span> 热梗广场</a></li>
+                    <li><a href="#community-showcase"><span class="nav-icon">🌟</span> 社区精选</a></li> 
+                    <li><a href="#my-creations"><span class="nav-icon">🖼️</span> 我的作品</a></li>
+                </ul>
+            </nav>
+            <div class="nav-footer">
+                 <p>解锁梗次元的你！</p>
+            </div>
+        </aside>
+
+        <main id="main-content">
+            <header>
+                <h1>梗表情之神</h1>
+            </header>
+
+            <section id="creation-area" class="content-section">
+                <!-- 嵌入的Coze网页内容 -->
+                <div class="embedded-webpage-container">
+                    <button class="open-external-btn" id="open-external-coze">在浏览器中打开/登录</button>
+                    <div class="fixed-webpage-overlay"></div>
+                    <iframe src="https://www.coze.cn/s/aGKb7cm-6Tk/" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </section>
+
+            <section id="explore-area" class="content-section" style="display:none;">
+                <h2><span class="section-icon">🔥</span> 热梗广场</h2>
+                <div class="search-container">
+                    <input type="search" id="meme-search-input" placeholder="搜你想找的梗...">
+                    <button id="meme-search-button">梗探探</button>
+                </div>
+                <div id="hot-memes-display" class="meme-grid">
+                    <div class="meme-item-placeholder">
+                        <img src="./img/image163.png" alt="热梗图 163" class="meme-actual-image">
+                        <p>#热梗 上新：本地素材 image163.png</p>
+                    </div>
+                    <div class="meme-item-placeholder">
+                        <img src="./img/image188.png" alt="热梗图 188" class="meme-actual-image">
+                        <p>#热门 本地素材 image188.png</p>
+                    </div>
+                    <div class="meme-item-placeholder">
+                        <img src="./img/image189.png" alt="热梗图 189" class="meme-actual-image">
+                        <p>#广场 精选 image189.png</p>
+                    </div>
+                    <div class="meme-item-placeholder">
+                        <img src="./img/image190.png" alt="热梗图 190" class="meme-actual-image">
+                        <p>#有梗 本地素材 image190.png</p>
+                    </div>
+                    <div class="meme-item-placeholder">
+                        <img src="./img/image193.png" alt="热梗图 193" class="meme-actual-image">
+                        <p>#分享 本地素材 image193.png</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="community-showcase" class="content-section" style="display:none;">
+                <h2><span class="section-icon">🌟</span> 社区精选</h2>
+                <div id="community-showcase-grid" class="meme-grid">
+                     <div class="meme-item-placeholder">
+                        <img src="https://picsum.photos/400/550?random=10" alt="社区精选作品 1" class="meme-actual-image">
+                        <p>社区大神作品展示 A - 由「P图小王子」分享！#创意无限 #每日精选</p>
+                    </div>
+                    <div class="meme-item-placeholder">
+                        <img src="https://picsum.photos/400/700?random=11" alt="社区精选作品 2" class="meme-actual-image">
+                        <p>来自用户「创意无限」的分享，这个作品获得了超多点赞！希望大家喜欢并多多评论。#用户分享 #点赞过万</p>
+                    </div>
+                    <div class="meme-item-placeholder">
+                        <img src="https://picsum.photos/400/480?random=12" alt="社区精选作品 3" class="meme-actual-image">
+                        <p>精选作品 C，简约而不简单。来自「设计爱好者」的投稿。#设计灵感</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="my-creations" class="content-section" style="display:none;">
+                <h2><span class="section-icon">🖼️</span> 我的作品</h2>
+                <div id="my-creations-grid" class="meme-grid empty-grid-message">
+                     <p>您还没有创作任何作品哦！快去「表情创作」中试试吧！</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="./js/script.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+</body>
+</html>
