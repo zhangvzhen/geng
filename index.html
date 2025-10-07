@@ -1,40 +1,25 @@
 <!doctype html>
 <meta charset="utf-8">
 <title>Coze OAuth Callback</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
-  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding:24px}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;padding:24px;margin:0;color:#e0e0e0;background:#1a1d24}
   .btn{display:inline-block;padding:10px 16px;border-radius:8px;background:#f35a69;color:#fff;text-decoration:none}
-  .tip{color:#666;margin-top:12px}
+  .tip{color:#a0a0a0;margin-top:12px}
 </style>
 <h3>正在跳回 App，请稍候…</h3>
 <a id="openApp" class="btn" href="#">手动返回 App</a>
 <div class="tip">若长时间无响应，请点击上方按钮。</div>
 <script>
-  // 读取授权回传的 code/state
-  const sp = new URLSearchParams(location.search);
-  const code  = sp.get('code')  || '';
-  const state = sp.get('state') || '';
-
-  // 你的 App 自定义 Scheme
-  const schemeUrl = `gemoji://oauth/callback?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`;
-
-  // Android intent 兜底（可选）：将包名替换为你的安卓包名（manifest 里配置的包名）
-  const pkg = 'god.of.meme'; // 例如 com.example.gemoji
-  const intentUrl = `intent://oauth/callback?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}#Intent;scheme=gemoji;package=${pkg};end`;
-
-  // 自动尝试打开 App；失败可手动点击按钮
-  const openBtn = document.getElementById('openApp');
-  openBtn.href = schemeUrl;
-
-  function tryOpen() {
-    // 先尝试自定义 Scheme
-    window.location.href = schemeUrl;
-    // 兜底：若 800ms 内没切走，Android 再试 intent
-    setTimeout(() => {
-      if (/Android/i.test(navigator.userAgent)) {
-        window.location.href = intentUrl;
-      }
-    }, 800);
+  const sp=new URLSearchParams(location.search);
+  const code=sp.get('code')||'', state=sp.get('state')||'';
+  const scheme=`gemoji://oauth/callback?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}`;
+  const pkg='god.of.meme';
+  const intent=`intent://oauth/callback?code=${encodeURIComponent(code)}&state=${encodeURIComponent(state)}#Intent;scheme=gemoji;package=${pkg};end`;
+  document.getElementById('openApp').href=scheme;
+  function openApp(){
+    location.href=scheme; // 先尝试自定义 Scheme
+    setTimeout(()=>{ if(/Android/i.test(navigator.userAgent)) location.href=intent; }, 800); // Android 兜底
   }
-  tryOpen();
+  openApp();
 </script>
